@@ -1,28 +1,36 @@
-variable "name" {}
-
-variable "cidr" {}
-
+variable "environment" {}
+variable "region" {
+  default = "us-east-1"
+}
+variable "vpc_cidr" {}
 variable "public_subnets" {
-  description = "A list of public subnets inside the VPC."
-  default     = []
+  default = []
+}
+variable "private_subnets" {
+  default = []
 }
 
-variable "private_subnets" {
-  description = "A list of private subnets inside the VPC."
-  default     = []
+variable "bastion_instance_type" {
+  default = "t2.micro"
 }
+variable "bastion_ami" {
+  default = {
+    "us-east-1" = "ami-f652979b"
+    "us-west-1" = "ami-7c4b331c"
+  }
+}
+
+variable "key_name" {}
 
 variable "enable_dns_hostnames" {
-  description = "should be true if you want to use private DNS within the VPC"
-  default     = false
+  description = "Should be true if you want to use private DNS within the VPC"
+  default     = true
 }
-
 variable "enable_dns_support" {
-  description = "should be true if you want to use private DNS within the VPC"
-  default     = false
+  description = "Should be true if you want to use private DNS within the VPC"
+  default     = true
 }
-
 variable "map_public_ip_on_launch" {
-  description = "should be false if you do not want to auto-assign public IP on launch"
+  description = "Should be false if you do not want to auto-assign public IP on launch"
   default     = true
 }
