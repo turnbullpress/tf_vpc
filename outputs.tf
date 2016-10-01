@@ -7,5 +7,5 @@ output "vpc_id" {
 }
 
 output "cidr" {
-  value = "${aws_vpc.cidr_block}"
+  value = "${aws_vpc.tfb.cidr_block}"
 }
