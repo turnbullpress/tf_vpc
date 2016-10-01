@@ -22,8 +22,7 @@ resource "aws_route" "internet_access" {
 
 resource "aws_subnet" "public" {
   vpc_id                  = "${aws_vpc.tfb.id}"
-  cidr_block              = "${var.public_subnets[count.index]}"
-  count                   = "${length(var.public_subnets)}"
+  cidr_block              = "${var.public_subnet}"
   map_public_ip_on_launch = "${var.map_public_ip_on_launch}"
   tags {
     Name = "${var.name}-public"
