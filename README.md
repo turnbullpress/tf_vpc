@@ -6,9 +6,9 @@ A lightweight VPC module for Terraform.
 
 ```hcl
 module "vpc" {
-  source = "github.com/jamtur01/tf_vpc"
+  source = "github.com/turnbullpublishing/tf_vpc"
 
-  name = "vpc_name"
+  environment = "vpc_name"
   key_name = "james"
 
   cidr = "10.0.0.0/16"
