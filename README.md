@@ -17,7 +17,7 @@ module "vpc" {
 }
 ```
 
-See `variables.tf` for additional configurable variables.
+See `interface.tf` for additional configurable variables.
 
 ## License
 
