@@ -27,7 +27,7 @@ output "public_route_table_id" {
 }
 
 output "private_route_table_id" {
-  value = ["${aws_route_table.private.id}"]
+  value = ["${aws_route_table.private.*.id}"]
 }
 
 output "default_security_group_id" {
