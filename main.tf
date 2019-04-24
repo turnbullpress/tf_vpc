@@ -3,7 +3,7 @@ resource "aws_vpc" "environment" {
   enable_dns_hostnames = "${var.enable_dns_hostnames}"
   enable_dns_support   = "${var.enable_dns_support}"
 
-  tags {
+  tags = {
     Name = "${var.environment}"
   }
 }
@@ -11,7 +11,7 @@ resource "aws_vpc" "environment" {
 resource "aws_internet_gateway" "environment" {
   vpc_id = "${aws_vpc.environment.id}"
 
-  tags {
+  tags = {
     Name = "${var.environment}-igw"
   }
 }
@@ -19,7 +19,7 @@ resource "aws_internet_gateway" "environment" {
 resource "aws_route_table" "public" {
   vpc_id = "${aws_vpc.environment.id}"
 
-  tags {
+  tags = {
     Name = "${var.environment}-public"
   }
 }
@@ -28,7 +28,7 @@ resource "aws_route_table" "private" {
   count  = "${length(var.private_subnets)}"
   vpc_id = "${aws_vpc.environment.id}"
 
-  tags {
+  tags = {
     Name = "${var.environment}-private"
   }
 }
@@ -51,7 +51,7 @@ resource "aws_subnet" "public" {
   cidr_block              = "${var.public_subnets[count.index]}"
   map_public_ip_on_launch = "${var.map_public_ip_on_launch}"
 
-  tags {
+  tags = {
     Name = "${var.environment}-public-${count.index}"
   }
 
@@ -63,7 +63,7 @@ resource "aws_subnet" "private" {
   cidr_block              = "${var.private_subnets[count.index]}"
   map_public_ip_on_launch = "false"
 
-  tags {
+  tags = {
     Name = "${var.environment}-private-${count.index}"
   }
 
@@ -121,7 +121,7 @@ resource "aws_security_group" "bastion" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags {
+  tags = {
     Name = "${var.environment}-bastion-sg"
   }
 }
@@ -135,7 +135,7 @@ resource "aws_instance" "bastion" {
   subnet_id                   = "${aws_subnet.public.*.id[0]}"
   associate_public_ip_address = true
 
-  tags {
+  tags = {
     Name = "${var.environment}-bastion"
   }
 }

@@ -39,16 +39,13 @@ variable "instance_type" {
   description = "The instance type to launch "
 }
 
-variable "vpc_id" {
-  description = "The VPC ID to launch in"
-}
-
 variable "bastion_instance_type" {
   default     = "t2.micro"
   description = "The bastion host instance type."
 }
 
 variable "bastion_ami" {
+  type = "map"
   default = {
     "us-east-1" = "ami-f652979b"
     "us-west-1" = "ami-7c4b331c"
