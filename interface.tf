@@ -1,30 +1,38 @@
 variable "region" {
+  type = string
   description = "The AWS region."
 }
 
 variable "environment" {
+  type = string
   description = "The name of our environment, i.e. development."
+  default = "development"
 }
 
 variable "key_name" {
+  type = string
   description = "The AWS key pair to use for resources."
 }
 
 variable "vpc_cidr" {
+  type = string
   description = "The CIDR of the VPC."
 }
 
 variable "public_subnets" {
+  type = list(string)
   default     = []
   description = "The list of public subnets to populate."
 }
 
 variable "private_subnets" {
+  type = list(string)
   default     = []
   description = "The list of private subnets to populate."
 }
 
 variable "ami" {
+  type = map(string)
   default = {
     "us-east-1" = "ami-f652979b"
     "us-west-1" = "ami-7c4b331c"
@@ -35,20 +43,24 @@ variable "ami" {
 }
 
 variable "instance_type" {
+  type = string
   default     = "t2.micro"
   description = "The instance type to launch "
 }
 
 variable "vpc_id" {
+  type = string
   description = "The VPC ID to launch in"
 }
 
 variable "bastion_instance_type" {
+  type = string
   default     = "t2.micro"
   description = "The bastion host instance type."
 }
 
 variable "bastion_ami" {
+  type = map(string)
   default = {
     "us-east-1" = "ami-f652979b"
     "us-west-1" = "ami-7c4b331c"
@@ -59,16 +71,19 @@ variable "bastion_ami" {
 }
 
 variable "enable_dns_hostnames" {
+  type = bool
   description = "Should be true if you want to use private DNS within the VPC"
   default     = true
 }
 
 variable "enable_dns_support" {
+  type = bool
   description = "Should be true if you want to use private DNS within the VPC"
   default     = true
 }
 
 variable "map_public_ip_on_launch" {
+  type = bool
   description = "Should be false if you do not want to auto-assign public IP on launch"
   default     = true
 }
