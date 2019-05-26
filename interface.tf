@@ -49,11 +49,6 @@ variable "instance_type" {
   description = "The instance type to launch "
 }
 
-variable "vpc_id" {
-  type = string
-  description = "The VPC ID to launch in"
-}
-
 variable "bastion_instance_type" {
   type = string
   default     = "t2.micro"
